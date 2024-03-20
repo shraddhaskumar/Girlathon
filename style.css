@@ -184,8 +184,8 @@
     justify-content: center;
     margin-top: 2rem; 
 }
-.dom {
-  font-size: 2rem; /* Adjust the font size as needed */
+.dom{
+  font-size: 40px;
   color: var(--primary-color-dark);
   text-align: center;
   font-weight: 600;
