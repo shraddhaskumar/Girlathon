@@ -11,10 +11,10 @@
         <nav>
             <div class="nav_logo">Niyati<span>Seva</span></div>
             <ul class="nav_links">
-                <li class="link"><a href="#">Home</a></li>
-                <li class="link"><a href="#">About Us</a></li>
-                <li class="link"><a href="#">Testimonials</a></li>
-                <li class="link"><a href="#">Login</a></li>
+                <li class="link"><a href="#home">Home</a></li>
+                <li class="link"><a href="#about">About Us</a></li>
+                <li class="link"><a href="#testimonials">Testimonials</a></li>
+                <li class="link"><a href="#login">Login</a></li>
             </ul>
             <button class="btn">Register Now</button>
         </nav>
@@ -50,20 +50,29 @@
         <button class="b">User</button>
         <button class="b">Pharmacy</button>
     </div>
+
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var navLinks = document.querySelectorAll('.nav_links a');
-        navLinks.forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                var targetId = this.getAttribute('href').substring(1);
-                var targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
-                }
+        function scrollToSection(sectionId) {
+            var section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOMContentLoaded event fired');
+            var navLinks = document.querySelectorAll('.nav_links a');
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var targetId = this.getAttribute('href').substring(1);
+                    var targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
 </body>
 </html>
