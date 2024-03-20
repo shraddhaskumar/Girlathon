@@ -185,6 +185,7 @@
     margin-top: 2rem; 
 }
 .dom{
+  text-decoration:none;
   font-size: 40px;
   color: var(--primary-color-dark);
   text-align: center;
