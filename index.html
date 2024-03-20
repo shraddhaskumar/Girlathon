@@ -51,12 +51,19 @@
         <button class="b">Pharmacy</button>
     </div>
     <script>
-        function scrollToSection(sectionId) {
-    var section = document.getElementById(sectionId);
-    if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-    }
-}
-    </script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var navLinks = document.querySelectorAll('.nav_links a');
+        navLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                var targetId = this.getAttribute('href').substring(1);
+                var targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
