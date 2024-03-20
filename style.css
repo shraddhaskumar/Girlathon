@@ -179,3 +179,26 @@
     font-size: 1.5rem;
     color:var(--primary-color);
   }
+  .Login {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem; 
+}
+
+.b {
+    width: 10rem; 
+    height: 6rem; 
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background-color: var(--primary-color);
+    color: var(--white); 
+    border-radius: 0; 
+    margin: 0 1rem;
+    border-radius: 1rem; 
+}
+.b:hover {
+  cursor: pointer;
+    background-color: var(--primary-color-dark); 
+}
+
