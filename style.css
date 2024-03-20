@@ -185,7 +185,7 @@
     margin-top: 2rem; 
 }
 .dom{
-  text-decoration:none;
+  text-decoration: none; /* Removing underline */
   font-size: 40px;
   color: var(--primary-color-dark);
   text-align: center;
@@ -208,5 +208,3 @@
   cursor: pointer;
     background-color: var(--primary-color-dark); 
 }
-
-
