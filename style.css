@@ -204,6 +204,10 @@
     margin: 0 1rem;
     border-radius: 1rem; 
 }
+.b a{
+  text-decoration: none;
+  color:inherit
+}
 .b:hover {
   cursor: pointer;
     background-color: var(--primary-color-dark); 
