@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Registration</title>
+    <!-- Ensure that the Firebase JavaScript files are loaded from a reliable source -->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js"></script>
+    <!-- Make sure user.css file is in the same directory as this HTML file -->
     <link rel="stylesheet" href="user.css">
 </head>
 <body>
@@ -46,10 +50,8 @@
     </form>
 </div>
 
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
-
+<script>
+    // Initialize Firebase with your configuration
     const firebaseConfig = {
         apiKey: "AIzaSyCjjWrLZ-nGoLn-ywK3LEQn5AYKXbrk2wo",
         authDomain: "girlathon-baf1c.firebaseapp.com",
@@ -58,24 +60,25 @@
         messagingSenderId: "712510120283",
         appId: "1:712510120283:web:34ba7c83764bde3ebdba7e"
     };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-
+    // Listen for form submission
     document.getElementById("userForm").addEventListener('submit', function(e) {
         e.preventDefault();
 
+        // Get form values
         const fullname = document.getElementById("fullname").value;
         const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value; // Ensure you're handling passwords securely!
+        const password = document.getElementById("password").value;
         const birthdate = document.getElementById("birthdate").value;
         const needs = document.getElementById("needs").value;
         const address = document.getElementById("address").value;
 
-        set(ref(db, 'user/' + fullname), {
+        // Save user data to Firebase
+        db.ref('users/' + fullname).set({
             email: email,
-            password: password, // Consider security implications
+            password: password,
             birthdate: birthdate,
             needs: needs,
             address: address
@@ -87,5 +90,6 @@
         });
     });
 </script>
+
 </body>
 </html>
