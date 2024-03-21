@@ -25,6 +25,22 @@
             <button type="submit">Login</button>
         </form>
     </div>
-    
+    <script>
+        function selectOption(option) {
+            const consultationButton = document.getElementById("consultation");
+            const medicinesButton = document.getElementById("medicines");
+            const optionInput = document.getElementById("option");
+
+            if (option === "consultation") {
+                consultationButton.classList.add("active");
+                medicinesButton.classList.remove("active");
+                optionInput.value = "consultation";
+            } else if (option === "medicines") {
+                consultationButton.classList.remove("active");
+                medicinesButton.classList.add("active");
+                optionInput.value = "medicines";
+            }
+        }
+    </script>
 </body>
 </html>
