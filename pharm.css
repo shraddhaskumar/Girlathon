@@ -1,0 +1,45 @@
+:root {
+    --primary-color: #676ef1;
+    --primary-color-dark: #0b0358;
+    --text-dark: #111827;
+    --text-light: #9aa9c6;
+    --white: #ffffff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--white);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: var(--primary-color);
+}
+
+label {
+    color: var(--text-dark);
+}
+
+input[type="text"],
+input[type="file"],
+select {
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid var(--primary-color);
+    border-radius: 3px;
+    box-sizing: border-box;
+    width: 40%;
+}
+
+input[type="submit"] {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto;
+    font-size: 16px;
+}
