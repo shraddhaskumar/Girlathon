@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Consultation</title>
+    <link rel="stylesheet" href="consult.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="content">
+                <h1>Welcome to <span>Online Consultation</span></h1>
+                <p>Consult with our expert doctors from the comfort of your home. Book your appointment now.</p>
+                <div class="doctor-select">
+                    <label for="doctor">Select Doctor:</label>
+                    <select id="doctor" name="doctor">
+                        <option value="">Select</option>
+                        <option value="dr-smith">Dr. Smith</option>
+                        <option value="dr-jones">Dr. Jones</option>
+                        <!-- Add more options for other doctors if needed -->
+                    </select>
+                </div>
+            </div>
+            <div class="doctor-details">
+                <!-- Doctor details will be displayed here -->
+            </div>
+            <div class="appointment" id="appointment">
+                <label for="appt-time">Select Date and Time:</label>
+                <input type="datetime-local" id="appt-time" name="appt-time">
+            </div>
+            <div class="schedule-btn">
+                <button id="schedule-btn" class="btn">Schedule Consultation</button>
+            </div>
+        </div>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="success-message" class="success-message">Consultation has been successfully scheduled.</p>
+        </div>
+    </div>
+
+    <script src="consult.js"></script> <!-- Include your JavaScript file if needed -->
+</body>
+</html>
