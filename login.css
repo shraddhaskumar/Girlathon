@@ -48,40 +48,41 @@ input[type="password"] {
     margin-bottom: 15px;
 }
 
-input[type="radio"] {
-    display: none;
-}
-
-label[for="consultation"],
-label[for="medicines"] {
-    padding: 10px;
-    border: 1px solid #676ef1; /* primary-color */
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-input[type="radio"]:checked + label {
-    background-color: #676ef1; /* primary-color */
-    color: #ffffff; /* white */
-}
-
 button {
     padding: 10px;
-    border: none;
-    background-color: #676ef1; /* primary-color */
-    color: #ffffff; /* white */
+    border: 1px solid #676ef1; /* primary-color */
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #0b0358; /* primary-color-dark */
+    background-color: #676ef1; /* primary-color */
+    color: #ffffff; /* white */
 }
 
-input:focus,
+button.active {
+    background-color: #676ef1; /* primary-color */
+    color: #ffffff; /* white */
+}
+
 button:focus {
     outline: none;
-    border-color: #676ef1; /* primary-color */
-    box-shadow: 0px 0px 5px rgba(103, 110, 241, 0.5);
+}
+
+input:focus {
+    outline: none;
+}
+
+button[type="submit"] {
+    background-color: #676ef1; /* primary-color */
+    color: #ffffff; /* white */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0b0358; /* primary-color-dark */
 }
