@@ -42,6 +42,29 @@ input[type="password"] {
     background-color: #ffffff; /* white */
 }
 
+.options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label[for="consultation"],
+label[for="medicines"] {
+    padding: 10px;
+    border: 1px solid #676ef1; /* primary-color */
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="radio"]:checked + label {
+    background-color: #676ef1; /* primary-color */
+    color: #ffffff; /* white */
+}
+
 button {
     padding: 10px;
     border: none;
