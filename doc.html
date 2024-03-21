@@ -9,30 +9,80 @@
 <body>
     <div class="container">
         <h2>Doctor Registration Form</h2>
-        <form action="#" method="POST">
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="specialization">Specialization:</label>
-            <input type="text" id="specialization" name="specialization" required>
-
-            <label for="experience">Years of Experience:</label>
-            <input type="number" id="experience" name="experience" required>
-
-            <label for="qualification">Qualification:</label>
-            <input type="text" id="qualification" name="qualification" required>
-
-            <label for="hospital">Current Hospital:</label>
-            <input type="text" id="hospital" name="hospital" required>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-
-            <button type="submit">Register</button>
+        <form id="doctorForm">
+            <div class="input-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="specialization">Specialization:</label>
+                <input type="text" id="specialization" name="specialization" required>
+            </div>
+            <div class="input-group">
+                <label for="experience">Years of Experience:</label>
+                <input type="number" id="experience" name="experience" required>
+            </div>
+            <div class="input-group">
+                <label for="qualification">Qualification:</label>
+                <input type="text" id="qualification" name="qualification" required>
+            </div>
+            <div class="input-group">
+                <label for="hospital">Current Hospital:</label>
+                <input type="text" id="hospital" name="hospital" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" id="sub">Register</button>
         </form>
     </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyCkuot9-OxsEnsuN1IS4Z1kRV6_iktO_vQ",
+  authDomain: "girlathon-doctors-f3b15.firebaseapp.com",
+  databaseURL: "https://girlathon-doctors-f3b15-default-rtdb.firebaseio.com",
+  projectId: "girlathon-doctors-f3b15",
+  storageBucket: "girlathon-doctors-f3b15.appspot.com",
+  messagingSenderId: "880242096620",
+  appId: "1:880242096620:web:5feb80836f57f6467528c9"
+        };
+    
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+    
+        document.getElementById("doctorForm").addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const specialization = document.getElementById("specialization").value;
+            const experience = document.getElementById("experience").value;
+            const qualification = document.getElementById("qualification").value;
+            const hospital = document.getElementById("hospital").value;
+            const password = document.getElementById("password").value;
+    
+            set(ref(db, 'doctors/' + name), {
+                email: email,
+                specialization: specialization,
+                experience: experience,
+                qualification: qualification,
+                hospital: hospital,
+                password: password
+            }).then(() => {
+                alert("Registration Successful!");
+            }).catch((error) => {
+                console.error("Error writing document: ", error);
+            });
+        });
+    </script>
+    
 </body>
 </html>
