@@ -86,3 +86,14 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #0b0358; /* primary-color-dark */
 }
+
+select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #676ef1; /* primary-color */
+    width: 100%;
+    box-sizing: border-box;
+    color: #111827; /* text-dark */
+    background-color: #ffffff; /* white */
+}
