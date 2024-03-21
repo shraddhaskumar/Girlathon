@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Login</title>
+    <title>Customer Login</title>
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
@@ -17,15 +17,14 @@
             <input type="password" id="password" name="password" required>
 
             <div class="options">
-                <input type="radio" id="consultation" name="option" value="consultation" >
-                <label for="consultation">Online Consultation</label>
-
-                <input type="radio" id="medicines" name="option" value="medicines">
-                <label for="medicines">Medicines</label>
+                <button type="button" id="consultation">Online Consultation</button>
+                <button type="button" id="medicines">Medicines</button>
+                <input type="hidden" id="option" name="option"> <!-- Hidden input to store selected option -->
             </div>
 
             <button type="submit">Login</button>
         </form>
     </div>
+    <script src="login.js"></script> <!-- JavaScript file for handling button clicks -->
 </body>
 </html>
