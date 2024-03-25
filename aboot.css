@@ -1,0 +1,72 @@
+/* styles.css */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.row {
+    display: inline; /* Use flexbox layout */
+    flex-wrap: wrap; /* Allow flex items to wrap */
+    justify-content: center; /* Horizontally center */
+    align-items:center; /* Vertically center */
+    padding: 20px;
+}
+.div.row{
+    width: 200px;
+}
+
+.column {
+    width: 40%; /* Adjust width as needed */
+    margin: 0 10px; /* Add margin for spacing between columns */
+    padding: 20px; /* Add padding as needed */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+}
+
+.about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+}
+
+.container {
+    padding: 0 16px;
+}
+
+.title {
+    color: grey;
+}
+
+.button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+.button:hover {
+    background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+    .column {
+        width: 100%; /* Set width to 100% for responsiveness */
+        margin: 0; /* Remove margin for smaller screens */
+    }
+    
+    .card:nth-last-child(-n+2) {
+        order: 2; /* Move the last two cards to the bottom */
+    }
+}
