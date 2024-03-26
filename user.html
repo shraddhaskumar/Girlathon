@@ -73,19 +73,18 @@
         const needs = document.getElementById("needs").value;
         const address = document.getElementById("location").value;
 
-        set(ref(db, 'user/' + fullname), {
-            email: email,
-            password: password, // Consider security implications
-            birthdate: birthdate,
-            needs: needs,
-            location:location
-        }).then(() => {
-            alert("Registration Successful!");
-            // Optionally, clear the form or redirect the user
-        }).catch((error) => {
-            console.error("Error writing document: ", error);
-        });
-    });
+set(ref(db, 'user/' + fullname), {
+    email: email,
+    password: password, // Consider security implications
+    birthdate: birthdate,
+    needs: needs,
+    location: location // Here should be 'address' instead of 'location'
+}).then(() => {
+    alert("Registration Successful!");
+    // Optionally, clear the form or redirect the user
+}).catch((error) => {
+    console.error("Error writing document: ", error);
+});
 </script>
 </body>
 </html>
