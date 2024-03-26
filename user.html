@@ -10,7 +10,7 @@
 
 <div class="container">
     <h2>User Registration</h2>
-    <form action="registration_process.php" method="post">
+    <form id="userForm" action="registration_process.php" method="post">
         <div class="input-group">
             <label for="fullname">Full Name</label>
             <input type="text" id="fullname" name="fullname" required>
@@ -39,20 +39,53 @@
             </select>
         </div>
         <div class="input-group">
-            <label for="needs">Select Your Need</label>
-            <select id="needs" name="needs">
-                <option value="pregnancy">Online Consultation</option>
-                <option value="menstruation">Medicines</option>
-            </select>
+            <label for="location">Location:</label>
+            <textarea id="location" name="location" rows="4"></textarea>
         </div>
-        
-        <div class="input-group">
-            <label for="address">Address:</label>
-            <textarea id="address" name="address" rows="4"></textarea>
-        </div>
-        <button type="submit">Register</button>
+        <button type="submit" id="sub">Register</button>
     </form>
 </div>
 
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyCjjWrLZ-nGoLn-ywK3LEQn5AYKXbrk2wo",
+        authDomain: "girlathon-baf1c.firebaseapp.com",
+        projectId: "girlathon-baf1c",
+        storageBucket: "girlathon-baf1c.appspot.com",
+        messagingSenderId: "712510120283",
+        appId: "1:712510120283:web:34ba7c83764bde3ebdba7e"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    document.getElementById("userForm").addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const fullname = document.getElementById("fullname").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value; // Ensure you're handling passwords securely!
+        const birthdate = document.getElementById("birthdate").value;
+        const needs = document.getElementById("needs").value;
+        const address = document.getElementById("location").value;
+
+        set(ref(db, 'user/' + fullname), {
+            email: email,
+            password: password, // Consider security implications
+            birthdate: birthdate,
+            needs: needs,
+            location:location
+        }).then(() => {
+            alert("Registration Successful!");
+            // Optionally, clear the form or redirect the user
+        }).catch((error) => {
+            console.error("Error writing document: ", error);
+        });
+    });
+</script>
 </body>
 </html>
