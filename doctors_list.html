@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors List</title>
+</head>
+<body>
+    <h2>Doctors List</h2>
+    <div id="doctorList">
+        <!-- Doctors' details will be displayed here -->
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyCTfeHoXdtoDl4WohgqYmksp_prGpah8FI",
+  authDomain: "girlathon-2319f.firebaseapp.com",
+  databaseURL: "https://girlathon-2319f-default-rtdb.firebaseio.com",
+  projectId: "girlathon-2319f",
+  storageBucket: "girlathon-2319f.appspot.com",
+  messagingSenderId: "1058148297919",
+  appId: "1:1058148297919:web:291f4e67e5e8a5e0692a0a"
+        };
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+    
+        function displayDoctorsByLocation() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const userLocation = urlParams.get('location');
+    
+            console.log("User Location:", userLocation); // Debugging statement
+    
+            if (userLocation) {
+                onValue(ref(db, 'doctors'), (snapshot) => {
+                    const doctorsData = snapshot.val();
+                    console.log("Doctors Data:", doctorsData); // Debugging statement
+                    if (doctorsData) {
+                        const doctorsWithSameLocation = Object.values(doctorsData).filter(doctor => {
+                            return doctor.location.trim().toLowerCase() === userLocation.trim().toLowerCase();
+                        });
+    
+                        console.log("Doctors with Same Location:", doctorsWithSameLocation); // Debugging statement
+    
+                        if (doctorsWithSameLocation.length > 0) {
+                            const doctorListContainer = document.getElementById('doctorList');
+                            doctorListContainer.innerHTML = ""; // Clear previous content
+    
+                            doctorsWithSameLocation.forEach(doctor => {
+                                const doctorDiv = document.createElement('div');
+                                doctorDiv.textContent = `Name: ${doctor.name}, Specialization: ${doctor.specialization}`;
+                                doctorListContainer.appendChild(doctorDiv);
+                            });
+                        } else {
+                            const doctorListContainer = document.getElementById('doctorList');
+                            doctorListContainer.textContent = "No doctors found with the same location as the user.";
+                        }
+                    } else {
+                        console.error("No doctor data found in the database.");
+                    }
+                }, (error) => {
+                    console.error("Error retrieving doctor data:", error);
+                });
+            } else {
+                console.error("User location not provided.");
+            }
+        }
+    
+        displayDoctorsByLocation();
+    </script>
+    
+    
+    
+</body>
+</html>
