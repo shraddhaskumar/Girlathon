@@ -4,11 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctors List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #111827;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #676ef1;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #9aa9c6;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #9aa9c6;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        #doctorList {
+            padding: 10px;
+            border: 1px solid #9aa9c6;
+            border-radius: 4px;
+            background-color: #676ef1;
+        }
+        .doctor {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #ffffff;
+            border: 1px solid #9aa9c6;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Times New Roman', Times, serif; /* Change font here */
+        }
+        .book-now-button {
+            padding: 8px 16px;
+            background-color: #676ef1;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .book-now-button:hover {
+            background-color: #0b0358;
+        }
+    </style>
 </head>
 <body>
-    <h2>Doctors List</h2>
-    <div id="doctorList">
-        <!-- Doctors' details will be displayed here -->
+    <div class="container">
+        <h2>Doctors List</h2>
+        <div id="doctorList">
+            <!-- Doctors' details will be displayed here -->
+        </div>
     </div>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
@@ -16,12 +82,12 @@
     
         const firebaseConfig = {
             apiKey: "AIzaSyCTfeHoXdtoDl4WohgqYmksp_prGpah8FI",
-  authDomain: "girlathon-2319f.firebaseapp.com",
-  databaseURL: "https://girlathon-2319f-default-rtdb.firebaseio.com",
-  projectId: "girlathon-2319f",
-  storageBucket: "girlathon-2319f.appspot.com",
-  messagingSenderId: "1058148297919",
-  appId: "1:1058148297919:web:291f4e67e5e8a5e0692a0a"
+            authDomain: "girlathon-2319f.firebaseapp.com",
+            databaseURL: "https://girlathon-2319f-default-rtdb.firebaseio.com",
+            projectId: "girlathon-2319f",
+            storageBucket: "girlathon-2319f.appspot.com",
+            messagingSenderId: "1058148297919",
+            appId: "1:1058148297919:web:291f4e67e5e8a5e0692a0a"
         };
     
         // Initialize Firebase
@@ -51,7 +117,14 @@
     
                             doctorsWithSameLocation.forEach(doctor => {
                                 const doctorDiv = document.createElement('div');
-                                doctorDiv.textContent = `Name: ${doctor.name}, Specialization: ${doctor.specialization}`;
+                                doctorDiv.classList.add('doctor');
+                                doctorDiv.innerHTML = `<span style="font-weight: bold;">Name:</span> ${doctor.name} <span style="font-weight: bold;">Specialization:</span> ${doctor.specialization}`;
+                                
+                                const bookNowButton = document.createElement('button');
+                                bookNowButton.textContent = "Book Now";
+                                bookNowButton.classList.add('book-now-button');
+                                doctorDiv.appendChild(bookNowButton);
+    
                                 doctorListContainer.appendChild(doctorDiv);
                             });
                         } else {
@@ -71,8 +144,5 @@
     
         displayDoctorsByLocation();
     </script>
-    
-    
-    
 </body>
 </html>
