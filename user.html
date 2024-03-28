@@ -10,7 +10,7 @@
 
 <div class="container">
     <h2>User Registration</h2>
-    <form id="userForm" action="registration_process.php" method="post">
+    <form id="userForm">
         <div class="input-group">
             <label for="fullname">Full Name</label>
             <input type="text" id="fullname" name="fullname" required>
@@ -42,6 +42,15 @@
             <label for="location">Location:</label>
             <textarea id="location" name="location" rows="4"></textarea>
         </div>
+        <br>
+        <div class="options" id="radiobut">
+            <input type="radio" id="consultation" name="option" value="consultation">
+            <label for="consultation">Online Consultation</label>
+
+            <input type="radio" id="medicines" name="option" value="medicines">
+            <label for="medicines">Medicines</label>
+        </div>
+        <br><br>
         <button type="submit" id="sub">Register</button>
     </form>
 </div>
@@ -50,14 +59,15 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
     import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
 
-    const firebaseConfig = {
-        apiKey: "AIzaSyCjjWrLZ-nGoLn-ywK3LEQn5AYKXbrk2wo",
-        authDomain: "girlathon-baf1c.firebaseapp.com",
-        projectId: "girlathon-baf1c",
-        storageBucket: "girlathon-baf1c.appspot.com",
-        messagingSenderId: "712510120283",
-        appId: "1:712510120283:web:34ba7c83764bde3ebdba7e"
-    };
+        const firebaseConfig = {
+  apiKey: "AIzaSyCTfeHoXdtoDl4WohgqYmksp_prGpah8FI",
+  authDomain: "girlathon-2319f.firebaseapp.com",
+  databaseURL: "https://girlathon-2319f-default-rtdb.firebaseio.com",
+  projectId: "girlathon-2319f",
+  storageBucket: "girlathon-2319f.appspot.com",
+  messagingSenderId: "1058148297919",
+  appId: "1:1058148297919:web:291f4e67e5e8a5e0692a0a"
+};
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
@@ -68,24 +78,42 @@
 
         const fullname = document.getElementById("fullname").value;
         const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value; // Ensure you're handling passwords securely!
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirm_password").value;
         const birthdate = document.getElementById("birthdate").value;
         const needs = document.getElementById("needs").value;
         const address = document.getElementById("location").value;
+        const radiobut = document.querySelector('input[name="option"]:checked');
 
-        set(ref(db, 'user/' + fullname), {
+        if (!radiobut) {
+            console.error("Please select an option.");
+            return;
+        }
+
+        const radiobutValue = radiobut.value;
+
+        if (password !== confirmPassword) {
+            console.error("Passwords do not match.");
+            return;
+        }
+
+        set(ref(db, 'users/' + fullname), {
             email: email,
-            password: password, // Consider security implications
+            password: password,
             birthdate: birthdate,
             needs: needs,
-            location: address // Corrected to use 'address' variable
+            location: address,
+            option: radiobutValue
         }).then(() => {
             alert("Registration Successful!");
-            // Optionally, clear the form or redirect the user
+            document.getElementById("userForm").reset(); // Optionally, clear the form
+            window.location.href = 'doctors_list.html?location=' + encodeURIComponent(address);
         }).catch((error) => {
             console.error("Error writing document: ", error);
+            alert("Registration failed. Please try again.");
         });
     });
 </script>
+
 </body>
 </html>
