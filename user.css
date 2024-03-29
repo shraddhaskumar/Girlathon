@@ -14,7 +14,27 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+.options input[type="radio"] {
+    display: none; /* Hide the default radio button */
+}
 
+.options label {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.options label:hover {
+    background-color: #e0e0e0;
+}
+
+.options input[type="radio"]:checked + label {
+    background-color: blue;
+    color: white;
+}
 h2 {
     text-align: center;
     margin-bottom: 20px;
