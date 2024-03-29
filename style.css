@@ -212,3 +212,15 @@
   cursor: pointer;
     background-color: var(--primary-color-dark); 
 }
+
+#contact {
+  background-color: #fffefe; /* Add a background color to make the contact section visible */
+  height: 10vh; /* Set the height to the full viewport height */
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.contact-left {
+  text-align: center; /* Center text horizontally */
+}
