@@ -118,7 +118,7 @@
                             doctorsWithSameLocation.forEach(doctor => {
                                 const doctorDiv = document.createElement('div');
                                 doctorDiv.classList.add('doctor');
-                                doctorDiv.innerHTML = `<span style="font-weight: bold;">Name:</span> ${doctor.name} <span style="font-weight: bold;">Specialization:</span> ${doctor.specialization}`;
+                                doctorDiv.innerHTML = `<span style="font-weight: bold;">Name:</span> ${doctor.name} <span style="font-weight: bold;">Hospital:</span> ${doctor.hospital}`;
                                 
                                 const bookNowButton = document.createElement('button');
                                 bookNowButton.textContent = "Book Now";
