@@ -10,60 +10,55 @@
     <div class="container">
         <h1>Join Our Family</h1>
         <form>
-            <label for="enterprise">Name of Enterprise</label><br>
+            <label for="enterprise">Name of Enterprise:</label><br>
             <input type="text" id="enterprise" name="enterprise"><br><br>
 
-            <label for="license">License no</label><br>
+            <label for="license">License no:</label><br>
             <input type="text" id="license" name="license"><br><br>
 
-           
+            <label for="proof">Upload Proof:</label><br>
+            <input type="file" id="proof" name="proof"><br><br>
 
-            <label for="country">Country</label><br>
+            <label for="country">Country:</label><br>
             <select id="country" name="country" onchange="populateStates()">
-                <option value="India">India</option>
-                <option value="Afghanistan">Afghanistan</option>
-                <option value="Bangladesh">Bangladesh</option>
-                <option value="Pakistan">Pakistan</option>
+                <option value="india">India</option>
+                <option value="afghanistan">Afghanistan</option>
+                <option value="bangladesh">Bangladesh</option>
+                <option value="bhutan">Bhutan</option>
                 <!-- Add more Asian countries here -->
             </select><br><br>
 
-            <label for="state">State</label><br>
+            <label for="state">State:</label><br>
             <select id="state" name="state" onchange="populateDistricts()">
-                <option value="Kerala">Kerala</option>
-                <option value="Tamil Nadu">Tamil Nadu</option>
-                <option value="Karnataka">Karnataka</option>
-                <option value="Andhra Predesh">Andhra Predesh</option>
                 <!-- States will be populated dynamically -->
             </select><br><br>
 
-            <label for="district">District</label><br>
+            <label for="district">District:</label><br>
             <select id="district" name="district">
-                <option value="Ernakulam">Ernakulam</option>
-                <option value="Alappuzha">Alappuzha</option>
-                <option value="Trissur">Trissur</option>
-                <option value="Palakkad">Palakkad</option>
                 <!-- Districts will be populated dynamically -->
             </select><br><br>
 
-            <label for="city">Area/City</label><br>
+            <label for="city">Area/City:</label><br>
             <input type="text" id="city" name="city"><br><br>
 
-            <label for="contact1">Contact Number 1</label><br>
+            <label for="contact1">Contact Number 1:</label><br>
             <input type="text" id="contact1" name="contact1"><br><br>
 
-            <label for="owner">Owner's Name</label><br>
+            <label for="owner">Owner's Name:</label><br>
             <input type="text" id="owner" name="owner"><br><br>
 
-            <label for="owner_phone">Phone No</label><br>
+            <label for="owner_phone">Phone No:</label><br>
             <input type="text" id="owner_phone" name="owner_phone"><br><br>
 
-            <label for="aadhar">Aadhaar No</label><br>
+            <label for="aadhar">Aadhaar No:</label><br>
             <input type="text" id="aadhar" name="aadhar"><br><br>
 
-            
+            <label for="owner_proof">Upload Proof:</label><br>
+            <input type="file" id="owner_proof" name="owner_proof"><br><br>
+
             <input type="submit" value="Submit">
         </form>
     </div>
-    
+    <script src="script.js"></script>
 </body>
 </html>
