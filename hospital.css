@@ -1,0 +1,77 @@
+:root {
+    --primary-color: #676ef1;
+    --primary-color-dark: #0b0358;
+    --text-dark: #111827;
+    --text-light: #9aa9c6;
+    --white: #ffffff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--white);
+}
+
+.container {
+    width: 600px; /* Updated width */
+    margin: 20px auto;
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: var(--text-dark);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--text-dark);
+}
+
+input[type="text"], input[type="tel"], input[type="checkbox"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--text-light);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+    width: auto;
+    display: inline-block;
+}
+
+.submit-btn, .contact-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--white);
+}
+
+.submit-btn {
+    background-color: var(--primary-color);
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.contact-btn {
+    background-color: var(--text-dark);
+}
+
+.contact-btn:hover {
+    background-color: var(--primary-color-dark);
+}
